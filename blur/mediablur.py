@@ -1,0 +1,17 @@
+import cv2
+import os
+method='medianblur'
+
+sourcedir='/home/cooper/PycharmProjects/MR_HE_TASK/org'
+targetdir='/home/cooper/PycharmProjects/MR_HE_TASK/out'
+
+imagename='1.png'
+imagenamelist=['1.png','2.png','3.png','4.png','5.png','6.png']
+for imagename in imagenamelist:
+
+    if not os.path.exists(targetdir+'/'+method):
+        os.mkdir(targetdir+'/'+method)
+    outputpath=targetdir+'/'+method+'/'+imagename
+    image=cv2.imread(sourcedir+'/'+imagename)
+    out=cv2.medianBlur(image,7)
+    cv2.imwrite(outputpath,out)
